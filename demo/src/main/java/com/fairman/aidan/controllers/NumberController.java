@@ -16,11 +16,6 @@ public class NumberController {
     @Autowired
     private NumberReformattingService numberReformatService;
 
-    @GetMapping("/convert")
-    public String getDefault(){
-        return "Default return message";
-    }
-
     @GetMapping("/convert/{number}")
     public String get(@PathVariable String number, @RequestParam List<String> types) {
         if (types.size() < 1) {
