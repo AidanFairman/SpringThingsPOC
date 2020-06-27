@@ -43,3 +43,7 @@ This factory is an incredibly simple interface that returns our serializers. Spr
 This is where the spring magic happens. We create a bean of the type `ServiceLocatorFactoryBean` and feed it our factory. From there, it creates a concrete class behind the scenes, and then apply any classes that meet the interface we expect to get back.
 
 Notice that here we have tagged the configuration with the `@Configuration` and `@ComponentScan` annotations. The `@Configuration` tags this as a configuration that spring should use to do exactly that. The `@ComponentScan` says that spring should scan (recursively i believe) into the classpath of the folder the class is in, and any contained folders looking for classes marked `@Component`. This is why we tagged our serializers with `@Component`.
+#### Serializer components
+These are just classes, annotated with `@Component`, that meet our `NumberSerializer` interface. The detail to notice here is that the default bean name when it's instantiated is the class name, in all lower case. That's how we are able to find the correct serializer based on the expected query params. 
+
+I believe there is a way to give the bean a specific name with an annotation, but i'll have to look that up and put that in here (soon™). I don't remember at this point in time.
